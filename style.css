@@ -1,9 +1,9 @@
 body {
-  font-family: arial;
-  background: #FF512F;
-  background: -webkit-linear-gradient(to left, #FF512F , #F09819); 
-  background: linear-gradient(to left, #FF512F , #F09819); 
-  padding: 50px 0;
+  font-family:  Geneva, Tahoma, sans-serif;
+  background: #24C6DC;
+  background: -webkit-linear-gradient(to left, #24C6DC , #514A9D);
+  background: linear-gradient(to left, #24C6DC , #514A9D);
+  padding: 25px 0;
 }
 
 .container {
@@ -29,7 +29,4 @@ h3 {
 img {
   height: 200px;
   width: 200px;
-}
-
-#loc, #cond {
 }
