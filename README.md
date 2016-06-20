@@ -1,8 +1,6 @@
-getVanillaWeather
+# getVanillaWeather
 
-Getting Started
-
-Checkout this repo, install dependencies, then start the build process with the following terminal commands:
+#####Getting Started:#####
 
     > git clone git@github.com:grooveIsAll/getVanillaWeather.git
     > cd getVanillaWeather
