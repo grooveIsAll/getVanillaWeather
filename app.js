@@ -1,4 +1,5 @@
-// Version for ES5
+// Version for ES5 (FireFox)
+
 (function() {
 
   var HttpClient = function() {
@@ -49,34 +50,44 @@
 
 })();
 
-// Version for ES2015
+// Version for ES2015 (Chrome)
 // (function() {
 
-//   const HttpClient = function() {
-//     this.get = (url, callback) => {
-//       const httpRequest = new XMLHttpRequest();
-//       httpRequest.onreadystatechange = () => {
-//         if(httpRequest.readyState == 4 && httpRequest.status == 200) {
-//           callback(httpRequest.responseText);
+//   function httpGet(url) {
+//     return new Promise(
+//       function(resolve, reject) {
+//         const request = new XMLHttpRequest();
+//         request.onload = function() {
+//           if(this.readyState == 4 && this. status == 200) {
+//             resolve(this.responseText);
+//           } else {
+//             reject(new Error(this.statusText));
+//           }
+//           request.oneerror = () => {
+//             reject(new Error(
+//               'XMLHttpRequest Error: ', this.statusText
+//             ));
+//           }
 //         }
-//       }
-//       httpRequest.open("GET", url, true);
-//       httpRequest.send(null);
-//     }
+//         request.open("GET", url, true);
+//         request.send(null);
+//       });
 //   }
 
-//   const request = new HttpClient();
-//   request.get("https://weathersync.herokuapp.com/ip", (response) => {
-    
-//     let data = JSON.parse(response);
-//     let coords = { long: data.location.longitude, lat: data.location.latitude };
-//     let weatherUrl = `https://weathersync.herokuapp.com/weather/${coords.lat},${coords.long}`;
-
-//     request
-//       .get(weatherUrl, (response) => {
-//         processWeatherData(response);
-//       });
-//   });
+//   httpGet("https://weathersync.herokuapp.com/ip")
+//     .then(
+//       (response) => {
+//         let data = JSON.parse(response);
+//         let { longitude, latitude } = data.location;
+//         let weatherUrl = `https://weathersync.herokuapp.com/weather/${latitude},${longitude}`;
+        
+//         return httpGet(weatherUrl);
+//       },
+//       (error) => { console.error('Something went wrong ', error); })
+//     .then(
+//       (value) => { processWeatherData(value); },
+//       (error) => { console.error('Something went wrong ', error); }
+//     );
 
 //   function processWeatherData(response) {
 //     let data = JSON.parse(response);  
